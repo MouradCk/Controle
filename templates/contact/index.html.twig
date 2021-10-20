@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos magnifiques contact{% endblock %}
+
+{% block body %}
+<div class="container">
+        <h1 class="my-3">Voici les contacts !</h1>
+
+    <div class="row">
+        {% for contact in contacts %}
+            {% set url =  path('ads_show', {'slug': ad.slug})  %}
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        {{  contact.nom }}{{ contact.prenom }}</strong> <br>
+                    </div>
+                    <a href="{{ contact.Image }}">
+                        <img src="{{ contact.coverImage }}" alt="Image de contact" style="height: 200px; width: 100%; display: block">
+                    </a>
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ url }}">
+                                {{ ad.title }}
+                            </a>     
+                        </h4>
+                        <p class="card-text">
+                            {{ ad.introduction }}
+                    
+                        </p>
+                        <a href="{{ url }}" class="btn btn-secondary">Afficher le détail !</a>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+    </div>
+    </div>
+{% endblock %}
